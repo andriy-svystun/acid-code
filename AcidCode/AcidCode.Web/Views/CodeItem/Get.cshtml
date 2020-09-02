@@ -1,0 +1,37 @@
+﻿@model AcidCode.Common.CodeItem
+
+@{
+    ViewBag.Title = "Get";
+}
+
+<h2>Code item</h2>
+
+<div>
+    <h4>View</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CodeText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodeText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntryPoint)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntryPoint)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Run", "RunCode", new { id = Model.Id, returnurl = Url.Action("Get", new { id = Model.Id }) })
+</p>
+<p>
+    @Html.ActionLink("Edit", "EditCode", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,21 @@
+﻿@model AcidCode.Web.Models.AdministrationViewModel
+
+<div class="container">
+    @foreach(var user in Model.Users)
+    {
+        <div class="row justify-content-start">
+                <div class="col">
+                    <div class="media">
+                        <img class="mr-3" src="~/images/gravatar.jpg" alt="User avatar">
+                        <div class="media-body">
+                            <h5 class="mt-0">@user.UserName </h5> 
+                            <p>
+                                @string.Join(",", user.UserRoles)
+                            </p>
+                                <a href="#">Edit</a> | <a href="#">Delete</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    }
+</div>

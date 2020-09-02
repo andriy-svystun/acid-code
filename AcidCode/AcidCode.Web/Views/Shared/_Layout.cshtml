@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" initial-scale=1 />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" />
+        
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @Html.ActionLink("Acid Code", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                @AcidHtml.MenuItem("Home", Url.Action("Index", "Home"), ViewBag.CurrentPage == "Home")
+
+                @AcidHtml.MenuItem("List", Url.Action("Index", "CodeItem"), ViewBag.CurrentPage == "List")
+
+                @if (this.User.IsInRole(AcidCode.Common.AcidCodeConstants.ADMINISTRATORS_ROLE))
+                {
+                    @AcidHtml.MenuItem("Administration", Url.Action("Index", "Administration"), ViewBag.CurrentPage == "Admin")
+
+                }
+            </ul>
+            @Html.Partial("_LoginInfoView")
+        </div>
+
+    </nav>
+    <div class="container">
+        @RenderBody()
+    </div>
+    @RenderSection("Scripts", false)
+    <script src='@Url.Content("~/Scripts/bootstrap.js")' async></script>
+</body>
+</html>

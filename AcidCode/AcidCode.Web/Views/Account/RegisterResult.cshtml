@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "RegisterResult";
+    Layout = "~/Views/Account/_AccountLayout.cshtml";
+}
+
+    @if (Model.IsSucceeded)
+    {
+        <div class="alert alert-success">
+            <strong>Registration successful</strong>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-danger">
+            <strong>Registration error</strong>
+        </div>
+
+        <div class="row justify-content-start">
+            <div class="col-sm-4 offset-sm-4">
+                <p>
+                    @Html.ValidationSummary()
+                </p>
+            </div>
+        </div>
+    }
+
+
+<div class="row">
+    <div class="col-md-2">
+        <p>
+            <a href="@ViewBag.ReturnUrl">Back</a> |
+            @Html.ActionLink("Home", "Index", "Home")
+        </p>
+    </div>
+</div>
+

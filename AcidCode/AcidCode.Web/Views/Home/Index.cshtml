@@ -1,0 +1,42 @@
+﻿@model AcidCode.Web.Models.HomeViewModel
+
+@{
+                ViewBag.Title = "Index";
+}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header text-center">
+                <h1>Hello on our Acid code project! </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <h1>
+                @Html.ActionLink("View all code list", "Index", "CodeItem")
+            </h1>
+        </div>
+        <div class="col-md-6">
+            @using (Html.BeginForm("SendCode", "Home", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <div class="col-md-10">
+                        @Html.LabelFor(l => l.CodeText, new { @class = "control-label" })
+                        @Html.TextAreaFor(t => t.CodeText, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(t => t.CodeText)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Compile and run it" class="btn btn-default" />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+

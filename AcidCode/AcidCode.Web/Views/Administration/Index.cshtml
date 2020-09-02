@@ -1,0 +1,45 @@
+﻿@model AcidCode.Web.Models.AdministrationViewModel
+@{
+    ViewBag.Title = "Administration";
+}
+
+<p>
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="page-header text-center">
+                <h2>Welcome to the site administration page</h2>
+            </div>
+        </div>
+    </div>
+</p>
+
+@if (Model.AdminMessage != null)
+{
+    <div class="alert alert-success" role="alert">
+        @Model.AdminMessage
+    </div>
+}
+
+<div class="row vdivide">
+
+    <div class="col-md-2">
+        <nav class="nav flex-column nav-pills">
+            <a class="@string.Concat("nav-link", Model.SectionName == "users" ? " active" : "")" href="@Url.Action("Index", new { section = "users"})">Users</a>
+            <a class="@string.Concat("nav-link", Model.SectionName == "settings" ? " active" : "")" href="@Url.Action("Index", new { section = "settings"})">Settings</a>
+        </nav>
+    </div>
+    <div class="col">
+        @if (Model.SectionName == "users")
+        {
+            @Html.Partial("_UsersListPage", Model)
+        }
+        else
+        {
+            @Html.Partial("_SiteSettingsPage", Model.SiteSettings)
+        }
+    </div>
+</div>
+
+
+

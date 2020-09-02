@@ -1,0 +1,40 @@
+﻿@model AcidCode.Web.Models.CodeRunResultViewModel
+
+
+<div class="page-header text-center">
+    <h1>Code analyzing and running results</h1>
+</div>
+
+
+
+@if (Model.IsSucceeded)
+{
+    <div class="alert alert-success">
+        <strong>Success</strong>
+    </div>
+
+    <div class="col-md-10 col-md-offset-2">
+        <div class="form-group">
+            <label class="col-md-2 control-label">Running time</label> @Html.TextBoxFor(m => m.RunningTime, new { @class = "col-md-2 form-control", @readonly = "readonly" })
+
+            <label class="col-md-2 control-label">Code output </label> @Html.TextAreaFor(t => t.CodeOutput, new { @class = "col-md-8 form-control", rows = 8, @readonly = "readonly" })
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-danger">
+        <strong>Error</strong>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-10 col-md-offset-2">
+            <label class="col-md-2 control-label">Errors</label>  @Html.TextAreaFor(e => e.ErrorsText, new { @class = "form-control", rows = 5, @readonly = "readonly" })
+        </div>
+    </div>
+}
+
+    <p>
+        <a href="@ViewBag.ReturnUrl">Back</a> | 
+        @Html.ActionLink("Return home", "Index", "Home")
+    </p>

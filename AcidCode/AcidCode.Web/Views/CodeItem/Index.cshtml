@@ -1,0 +1,35 @@
+﻿@model IEnumerable<AcidCode.Common.CodeItem>
+
+@{
+    ViewBag.Title = "Code list";
+}
+
+<h2>Code list</h2>
+
+<p>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @Html.ActionLink("Create New", "AddCode")
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CodeText)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodeText)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditCode", new { id=item.Id }) |
+            @Html.ActionLink("View", "Get", new { id=item.Id }) |
+        </td>
+    </tr>
+}
+
+</table>

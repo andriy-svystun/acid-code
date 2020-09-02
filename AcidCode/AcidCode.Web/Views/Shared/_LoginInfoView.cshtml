@@ -1,0 +1,11 @@
+﻿<span class="navbar-text">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <span>Logged as </span> <a href="@Url.Action("Login","Account", new { returnUrl = this.Context.Request.Url.PathAndQuery})">@User.Identity.Name</a> <a href="@Url.Action("Logout","Account", new { returnUrl = this.Context.Request.Url.PathAndQuery })">Logout</a>
+    }
+    else
+    {
+        <a href="@Url.Action("Login","Account", new { returnUrl = this.Context.Request.Url.PathAndQuery })">Login</a> <a href="@Url.Action("Register","Account", new { returnUrl = this.Context.Request.Url.PathAndQuery })">Register</a>
+    }
+</span>
+
